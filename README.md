@@ -3,11 +3,11 @@
 The WindowManagement package allows you to control window behaviors of SwiftUI Scenes without doing weird tricks.
 Views can also access the NSWindow through the Environment.
 
-[Scene Modifiers](https://github.com/Wouter01/SwiftUI-WindowManagement/edit/main/README.md#available-scene-modifiers)
+[Scene Modifiers](#available-scene-modifiers)
 
-[View Modifiers](https://github.com/Wouter01/SwiftUI-WindowManagement/edit/main/README.md#available-scene-modifiers)
+[View Modifiers](#available-scene-modifiers)
 
-[Example](https://github.com/Wouter01/SwiftUI-WindowManagement/edit/main/README.md#example)
+[Example](#example)
 
 <img width="641" alt="Scherm­afbeelding 2023-01-06 om 21 45 28" src="https://user-images.githubusercontent.com/62355975/211096955-837f2ad0-f9dd-4cf6-88e4-6a8ba0acb9d1.png">
 
