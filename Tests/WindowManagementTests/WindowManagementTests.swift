@@ -6,6 +6,6 @@ final class WindowManagementTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(WindowManagement().text, "Hello, World!")
+        XCTAssertEqual(WM().text, "Hello, World!")
     }
 }
