@@ -14,6 +14,8 @@ Views can also access the NSWindow through the Environment.
 ## Notice
 > This package uses and modifies some internals of SwiftUI. As SwiftUI changes frequently, implementations might break.
 
+> Note: DocumentGroup is not supported (yet)
+
 ## Compatibility
 - macOS 12.0 (Untested, but should work)
 - macOS 13.0+
