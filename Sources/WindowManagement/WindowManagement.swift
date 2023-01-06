@@ -20,6 +20,7 @@ struct WindowModifications {
     var tabbingMode: NSWindow.TabbingMode?
     var backgroundColor: NSColor?
     var titlebarAppearsTransparent: Bool?
+    var disableRestoreOnLaunch: Bool?
 
     struct WindowButton {
         var enabled = true

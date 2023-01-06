@@ -89,12 +89,8 @@ public extension Scene {
     }
 
     /// This will stop windows from relaunching if they were open in the last active app state.
-    func disableResumeOnLaunch() -> some Scene {
-        UserDefaults.standard.dictionaryRepresentation().keys.forEach { key in
-            if key.starts(with: "NSWindow Frame \(WM.currentIdentifier)-AppWindow") {
-                UserDefaults.standard.removeObject(forKey: key)
-            }
-        }
+    func disableRestoreOnLaunch() -> some Scene {
+        WM.modifications[WM.currentIdentifier]?.disableRestoreOnLaunch = true
         return self
     }
 }

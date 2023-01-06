@@ -31,6 +31,7 @@ extension NSWindow {
         }
 
         if let id = newValue {
+
             let key = id.rawValue.prefix(while: { $0 != "-"})
 
             let value = WM.modifications[String(key)]
@@ -63,6 +64,10 @@ extension NSWindow {
 
             if let transparent = value.titlebarAppearsTransparent {
                 self.titlebarAppearsTransparent = transparent
+            }
+
+            if let disableRestore = value.disableRestoreOnLaunch {
+                self.isRestorable = !disableRestore
             }
 
             value.windowButtonsEnabled.forEach {
