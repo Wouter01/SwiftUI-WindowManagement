@@ -27,7 +27,6 @@ extension NSWindow {
         self.setSwizzledIdentifier(newValue)
 
         if !WM.availableWindows.contains(self) {
-            //                requests = Array(requests.dropFirst())
             WM.availableWindows.append(self)
         }
 

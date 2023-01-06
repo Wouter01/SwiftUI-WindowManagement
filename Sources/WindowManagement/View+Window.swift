@@ -32,11 +32,8 @@ struct Injectwindow: ViewModifier {
             .environment(\.window, window)
             .task {
                 if window.identifier == nil {
-                    print("Getting window... \(window.identifier?.rawValue)")
-                    //                takenWindows.append(window!.windowNumber)
                     window = WM.availableWindows.first { $0.identifier?.rawValue.starts(with: identifier) ?? false } ?? NSWindow()
                     WM.availableWindows = Array(WM.availableWindows.dropFirst())
-                    print(window.identifier)
                 }
             }
     }

@@ -43,7 +43,6 @@ public extension Scene {
     /// Note that `NSWindow.StyleMask.titled` is always included, otherwise SwiftUI will crash.
     func styleMask(_ styleMask: NSWindow.StyleMask) -> some Scene {
         WM.modifications[WM.currentIdentifier]?.styleMask = styleMask
-        //        currentWindow?.styleMask = styleMask
         return self
     }
 
