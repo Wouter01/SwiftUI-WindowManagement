@@ -94,7 +94,7 @@ Makes the titlebar transparent.
 func titlebarAppearsTransparent(_ value: Bool)
 ```
 
-#### disableResumeOnLaunch
+#### disableRestoreOnLaunch
 This will stop windows from relaunching if they were open in the last active app state.
 > Note: While this should work fine, I can't guarantee it.
 ```swift
