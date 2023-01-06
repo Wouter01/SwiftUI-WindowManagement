@@ -11,6 +11,13 @@ Views can also access the NSWindow through the Environment.
 
 <img width="641" alt="Scherm­afbeelding 2023-01-06 om 21 45 28" src="https://user-images.githubusercontent.com/62355975/211096955-837f2ad0-f9dd-4cf6-88e4-6a8ba0acb9d1.png">
 
+## Notice
+> This package uses and modifies some internals of SwiftUI. As SwiftUI changes frequently, implementations might break.
+
+## Compatibility
+- macOS 12.0 (Untested, but should work)
+- macOS 13.0+
+
 ## Available Scene modifiers
 #### register
 This modifier enables the modification of the underlying `NSWindow` for this scene.
