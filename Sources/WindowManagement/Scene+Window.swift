@@ -73,6 +73,11 @@ public extension Scene {
         return self
     }
 
+    func titlebarAppearTransparent(_ value: Bool) -> some Scene {
+        WM.modifications[WM.currentIdentifier]?.titlebarAppearsTransparent = value
+        return self
+    }
+
     /// This will stop windows from relaunching if they were open in the last active app state.
     func disableResumeOnLaunch() -> some Scene {
         UserDefaults.standard.dictionaryRepresentation().keys.forEach { key in

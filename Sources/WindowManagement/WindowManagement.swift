@@ -15,6 +15,7 @@ struct WindowModifications {
     var movable: Bool?
     var tabbingMode: NSWindow.TabbingMode?
     var backgroundColor: NSColor?
+    var titlebarAppearsTransparent: Bool?
 
     struct WindowButton {
         var enabled = true

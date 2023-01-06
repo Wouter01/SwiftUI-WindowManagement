@@ -62,6 +62,10 @@ extension NSWindow {
                 self.backgroundColor = bgColor
             }
 
+            if let transparent = value.titlebarAppearsTransparent {
+                self.titlebarAppearsTransparent = transparent
+            }
+
             value.windowButtonsEnabled.forEach {
                 standardWindowButton($0)?.isHidden = $1.isHidden
                 standardWindowButton($0)?.isEnabled = $1.enabled
