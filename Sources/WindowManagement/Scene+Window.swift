@@ -10,9 +10,20 @@ import SwiftUI
 public extension Scene {
 
     /// Registers a scene to be modified by the following scene modifiers.
+    /// The identifier should be the same as in the Scene initializer.
+    /// This modifier should be called before other modifiers of this package.
     func register(_ identifier: String) -> some Scene {
         WM.currentIdentifier = identifier
         WM.modifications[identifier] = WindowModifications()
+        return self
+    }
+
+    /// Registers the settings scene to be modified by the following scene modifiers.
+    /// The identifier should be the same as in the Scene initializer.
+    /// This modifier should be called before other modifiers of this package.
+    func registerSettingsWindow() -> some Scene {
+        WM.currentIdentifier = "com_apple_SwiftUI_Settings_window"
+        WM.modifications[WM.currentIdentifier] = WindowModifications()
         return self
     }
 
@@ -72,7 +83,8 @@ public extension Scene {
         return self
     }
 
-    func titlebarAppearTransparent(_ value: Bool) -> some Scene {
+    /// Makes the titlebar transparent.
+    func titlebarAppearsTransparent(_ value: Bool) -> some Scene {
         WM.modifications[WM.currentIdentifier]?.titlebarAppearsTransparent = value
         return self
     }

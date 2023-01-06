@@ -8,6 +8,7 @@
 import SwiftUI
 
 public extension View {
+    /// Inject the settings window into the environment.
     func injectSettingsWindow() -> some View {
         if #available(macOS 13, *) {
             return self.modifier(Injectwindow(identifier: "com_apple_SwiftUI_Settings_window"))
@@ -16,7 +17,8 @@ public extension View {
         }
     }
 
-    func injectWindow(identifier: String) -> some View {
+    /// Inject the current window into the environment.
+    func injectWindow(_ identifier: String) -> some View {
         return self.modifier(Injectwindow(identifier: identifier))
     }
 }
