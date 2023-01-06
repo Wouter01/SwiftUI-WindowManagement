@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct WM {
-    static var currentIdentifier: String = ""
+    static var currentIdentifier: String = "" {
+        didSet {
+            NSWindow.swizzleAll()
+        }
+    }
     static var availableWindows: [NSWindow] = []
     static var modifications: [String: WindowModifications] = [:]
     static var didSwizzle = false

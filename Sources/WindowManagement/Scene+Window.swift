@@ -11,7 +11,6 @@ public extension Scene {
 
     /// Registers a scene to be modified by the following scene modifiers.
     func register(_ identifier: String) -> some Scene {
-        NSWindow.swizzleAll()
         WM.currentIdentifier = identifier
         WM.modifications[identifier] = WindowModifications()
         return self

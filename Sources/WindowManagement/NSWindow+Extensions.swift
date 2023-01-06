@@ -72,5 +72,4 @@ extension NSWindow {
             }
         }
     }
-
 }

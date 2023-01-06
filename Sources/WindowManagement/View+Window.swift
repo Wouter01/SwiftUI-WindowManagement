@@ -9,7 +9,6 @@ import SwiftUI
 
 public extension View {
     func injectSettingsWindow() -> some View {
-        NSWindow.swizzleAll()
         if #available(macOS 13, *) {
             return self.modifier(Injectwindow(identifier: "com_apple_SwiftUI_Settings_window"))
         } else {
@@ -18,7 +17,6 @@ public extension View {
     }
 
     func injectWindow(identifier: String) -> some View {
-        NSWindow.swizzleAll()
         return self.modifier(Injectwindow(identifier: identifier))
     }
 }
