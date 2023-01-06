@@ -117,6 +117,14 @@ Get the NSWindow from a View.
 @Environment(\.window) var window
 ```
 
+## Extras
+
+Make SwiftUI Materials always active
+> Note: Set this once in the initializer of your implementation of the `App` protocol
+```swift
+NSWindow.alwaysUseActiveAppearance = true
+```
+
 ## Example
 
 The following code shows the implementation of the window shown above.
