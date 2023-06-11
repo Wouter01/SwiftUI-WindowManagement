@@ -41,7 +41,7 @@ struct MyApp: App {
 You can open a window by calling the following function:
 ```swift
 func applicationDidFinishLaunching(_ notification: Notification) {
-    NSApp.openWindow(.firstWindowGroup)
+    NSApp.openWindow(.myWindow)
 }
 ```
 
