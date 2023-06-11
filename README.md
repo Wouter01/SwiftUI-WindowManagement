@@ -155,6 +155,12 @@ This will stop windows from relaunching if they were open in the last active app
 func disableRestoreOnLaunch()
 ```
 
+#### transition
+Configure the NSWindow.AnimationBehavior for the Scene
+```swift
+func transition(_ transition: NSWindow.AnimationBehavior)
+```
+
 ## Available View modifiers
 Inject the current window into the environment.
 ```swift
