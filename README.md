@@ -18,9 +18,88 @@ Views can also access the NSWindow through the Environment.
 
 ## Compatibility
 - macOS 12.0 (Untested, but should work)
-- macOS 13.0+
+- macOS 13.0
+- macOS 14.0
 
-## Available Scene modifiers
+## NSDocumentGroup
+NSDocumentGroup is an alternative to SwiftUI's documentgroup. It allows you to use a SwiftUI Window with an NSDocument. This is useful for cases where you need SwiftUI (for example, to make `.focusedValue` work), but `FileDocument` or `ReferenceFileDocument` are not meeting your requirements. One of the issues I ran into with these types is that they become slow when opening large folders (for example, a node_modules folder). Using an NSDocument allows you to optimize this.
+
+### Usage
+See the example folder for a working sample project.
+
+First, create a NSDocument class (make sure to add the filetype to the project config).
+Override the `makeWindowControllers()` type and open a new SwiftUI window by calling `openDocument`.
+```swift
+override func makeWindowControllers() {
+    if let window = NSApp.openDocument(self), let windowController = window.windowController {
+        addWindowController(windowController)
+    }
+}
+```
+Add a new NSDocumentGroup Scene to your app. The scene provides a reference to the opened NSDocument.
+```swift
+NSDocumentGroup(for: CodeFileDocument.self) { document in
+    Text(document.fileURL?.absoluteString ?? "")
+}
+```
+
+## Opening SwiftUI Windows from anywhere in your app.
+Using SwiftUI windows can be difficult when parts of your app rely on AppKit types. For example, you can't open a SwiftUI window from an `AppDelegate`. This package adds some functions to `NSApp` to allow this kind of behavior.
+
+### Usage
+First, define a SceneID for each SwiftUI scene:
+```swift
+extension SceneID {
+    static let myWindow = SceneID("myWindow")
+}
+```
+Important: you must add `.enableOpenWindow()` to one scene (only one is required) to enable the functionality.
+```swift
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup(id: SceneID.myWindow.id) {
+            ...
+        }
+        .enableOpenWindow()
+    }
+}
+```
+You can open a window by calling the following function:
+```swift
+func applicationDidFinishLaunching(_ notification: Notification) {
+    NSApp.openWindow(.firstWindowGroup)
+}
+```
+
+You can also open a SwiftUI Settings window (also works on macOS Sonoma):
+```swift
+func applicationDidFinishLaunching(_ notification: Notification) {
+    NSApp.openSettings()
+}
+```
+
+## Passing an Environment Value to multiple Scenes
+```swift
+var body: some Scene {
+    Group {
+        WindowGroup {
+            ...
+        }
+
+        Settings {
+            ...
+        }
+        
+        NSDocumentGroup(for: CodeFileDocument.self) { document in
+            ...
+        }
+    }
+    .environment(\.controlSize, .large)
+}
+```
+
+## Scene Window UI Modifiers
 #### register
 This modifier enables the modification of the underlying `NSWindow` for this scene.
 It should always be called before any of the other modifiers.
@@ -29,6 +108,8 @@ For the `Settings` Scene, use `registerSettingsWindow`.
 
 ```swift
 func register(_ identifier: String)
+
+func register(_ identifier: SceneID)
 
 func registerSettingsWindow()
 ```
@@ -134,17 +215,21 @@ The following code shows the implementation of the window shown above.
 import SwiftUI
 import WindowManagement
 
+extension SceneID {
+    static let myWindow = SceneID("myWindow")
+}
+
 @main
 struct MyApp: App {
 
     var body: some Scene {
-        WindowGroup(id: "MyWindow") {
+        WindowGroup(id: SceneID.myWindow.id) {
             ContentView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.regularMaterial)
-            .injectWindow("MyWindow")
+            .injectWindow(.myWindow)
         }
-        .register("MyWindow")
+        .register(.myWindow)
         .titlebarAppearsTransparent(true)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .movableByBackground(true)

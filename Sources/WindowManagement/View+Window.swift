@@ -21,6 +21,11 @@ public extension View {
     func injectWindow(_ identifier: String) -> some View {
         return self.modifier(Injectwindow(identifier: identifier))
     }
+
+    /// Inject the current window into the environment.
+    func injectWindow(_ identifier: SceneID) -> some View {
+        return self.modifier(Injectwindow(identifier: identifier.id))
+    }
 }
 
 struct Injectwindow: ViewModifier {

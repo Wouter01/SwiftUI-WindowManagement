@@ -25,6 +25,7 @@ struct WindowManagementProjectApp: App {
         Group {
             WindowGroup(id: SceneID.firstWindowGroup.id) {
                 ContentView()
+                    .injectWindow(.firstWindowGroup)
             }
             .register(.firstWindowGroup)
             .windowButton(.closeButton, hidden: true)
