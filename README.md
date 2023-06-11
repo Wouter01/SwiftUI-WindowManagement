@@ -3,7 +3,8 @@
 The WindowManagement package allows you to control window behaviors of SwiftUI Scenes without doing weird tricks.
 Views can also access the NSWindow through the Environment.
 
-<img width="641" alt="Scherm­afbeelding 2023-01-06 om 21 45 28" src="https://user-images.githubusercontent.com/62355975/211096955-837f2ad0-f9dd-4cf6-88e4-6a8ba0acb9d1.png">
+<img width="602" alt="image" src="https://github.com/Wouter01/SwiftUI-WindowManagement/assets/62355975/fa1db759-a21b-41b8-86a1-9c633a4bdfa8">
+
 
 ## Notice
 > This package uses and modifies some internals of SwiftUI. As SwiftUI changes frequently, implementations might break.
