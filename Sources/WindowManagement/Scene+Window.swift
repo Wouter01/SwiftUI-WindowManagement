@@ -18,6 +18,15 @@ public extension Scene {
         return self
     }
 
+    /// Registers a scene to be modified by the following scene modifiers.
+    /// The identifier should be the same as in the Scene initializer.
+    /// This modifier should be called before other modifiers of this package.
+    func register(_ identifier: SceneID) -> some Scene {
+        WM.currentIdentifier = identifier.id
+        WM.modifications[identifier.id] = WindowModifications()
+        return self
+    }
+
     /// Registers the settings scene to be modified by the following scene modifiers.
     /// The identifier should be the same as in the Scene initializer.
     /// This modifier should be called before other modifiers of this package.
