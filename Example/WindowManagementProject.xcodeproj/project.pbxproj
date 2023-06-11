@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6C11A8C02A36610500E86728 /* CodeFileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11A8BF2A36610500E86728 /* CodeFileDocument.swift */; };
 		6C11A8C42A368C3F00E86728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 6C11A8C32A368C3F00E86728 /* WindowManagement */; };
+		6C11A8C72A368E7B00E86728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 6C11A8C62A368E7B00E86728 /* WindowManagement */; };
 		6CC243D12A3648FE003F9C1A /* WindowManagementProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC243D02A3648FE003F9C1A /* WindowManagementProjectApp.swift */; };
 		6CC243D32A3648FE003F9C1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC243D22A3648FE003F9C1A /* ContentView.swift */; };
 		6CC243D52A3648FF003F9C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CC243D42A3648FF003F9C1A /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C11A8C72A368E7B00E86728 /* WindowManagement in Frameworks */,
 				6CC243E12A36491D003F9C1A /* WindowManagement in Frameworks */,
 				6C11A8C42A368C3F00E86728 /* WindowManagement in Frameworks */,
 			);
@@ -97,6 +99,7 @@
 			packageProductDependencies = (
 				6CC243E02A36491D003F9C1A /* WindowManagement */,
 				6C11A8C32A368C3F00E86728 /* WindowManagement */,
+				6C11A8C62A368E7B00E86728 /* WindowManagement */,
 			);
 			productName = WindowManagementProject;
 			productReference = 6CC243CD2A3648FE003F9C1A /* WindowManagementProject.app */;
@@ -127,7 +130,7 @@
 			);
 			mainGroup = 6CC243C42A3648FE003F9C1A;
 			packageReferences = (
-				6C11A8C22A368C3F00E86728 /* XCLocalSwiftPackageReference ".." */,
+				6C11A8C52A368E7B00E86728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 			);
 			productRefGroup = 6CC243CE2A3648FE003F9C1A /* Products */;
 			projectDirPath = "";
@@ -361,16 +364,25 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		6C11A8C22A368C3F00E86728 /* XCLocalSwiftPackageReference ".." */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
+/* Begin XCRemoteSwiftPackageReference section */
+		6C11A8C52A368E7B00E86728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		6C11A8C32A368C3F00E86728 /* WindowManagement */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = WindowManagement;
+		};
+		6C11A8C62A368E7B00E86728 /* WindowManagement */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C11A8C52A368E7B00E86728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */;
 			productName = WindowManagement;
 		};
 		6CC243E02A36491D003F9C1A /* WindowManagement */ = {

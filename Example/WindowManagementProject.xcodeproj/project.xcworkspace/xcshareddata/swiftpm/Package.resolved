@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftui-windowmanagement",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Wouter01/SwiftUI-WindowManagement",
+      "state" : {
+        "revision" : "00f16c089e427babe5f8c00691d3fe692bcf1974",
+        "version" : "2.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
