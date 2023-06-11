@@ -16,28 +16,6 @@ Views can also access the NSWindow through the Environment.
 - macOS 13.0
 - macOS 14.0
 
-## NSDocumentGroup
-NSDocumentGroup is an alternative to SwiftUI's documentgroup. It allows you to use a SwiftUI Window with an NSDocument. This is useful for cases where you need SwiftUI (for example, to make `.focusedValue` work), but `FileDocument` or `ReferenceFileDocument` are not meeting your requirements. One of the issues I ran into with these types is that they become slow when opening large folders (for example, a node_modules folder). Using an NSDocument allows you to optimize this.
-
-#### Usage
-See the example folder for a working sample project.
-
-First, create a NSDocument class (make sure to add the filetype to the project config).
-Override the `makeWindowControllers()` type and open a new SwiftUI window by calling `openDocument`.
-```swift
-override func makeWindowControllers() {
-    if let window = NSApp.openDocument(self), let windowController = window.windowController {
-        addWindowController(windowController)
-    }
-}
-```
-Add a new NSDocumentGroup Scene to your app. The scene provides a reference to the opened NSDocument.
-```swift
-NSDocumentGroup(for: CodeFileDocument.self) { document in
-    Text(document.fileURL?.absoluteString ?? "")
-}
-```
-
 ## Opening SwiftUI Windows from anywhere in your app.
 Using SwiftUI windows can be difficult when parts of your app rely on AppKit types. For example, you can't open a SwiftUI window from an `AppDelegate`. This package adds some functions to `NSApp` to allow this kind of behavior.
 
@@ -191,6 +169,28 @@ func injectSettingsWindow()
 Get the NSWindow from a View.
 ```swift
 @Environment(\.window) var window
+```
+
+## NSDocumentGroup
+NSDocumentGroup is an alternative to SwiftUI's documentgroup. It allows you to use a SwiftUI Window with an NSDocument. This is useful for cases where you need SwiftUI (for example, to make `.focusedValue` work), but `FileDocument` or `ReferenceFileDocument` are not meeting your requirements. One of the issues I ran into with these types is that they become slow when opening large folders (for example, a node_modules folder). Using an NSDocument allows you to optimize this.
+
+#### Usage
+See the example folder for a working sample project.
+
+First, create a NSDocument class (make sure to add the filetype to the project config).
+Override the `makeWindowControllers()` type and open a new SwiftUI window by calling `openDocument`.
+```swift
+override func makeWindowControllers() {
+    if let window = NSApp.openDocument(self), let windowController = window.windowController {
+        addWindowController(windowController)
+    }
+}
+```
+Add a new NSDocumentGroup Scene to your app. The scene provides a reference to the opened NSDocument.
+```swift
+NSDocumentGroup(for: CodeFileDocument.self) { document in
+    Text(document.fileURL?.absoluteString ?? "")
+}
 ```
 
 ## Extras
