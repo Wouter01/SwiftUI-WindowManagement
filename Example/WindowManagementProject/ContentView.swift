@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.window) var window
     var body: some View {
         VStack {
-            Text("Window title:", window.title)
+            Text("Window title: \(window.title)")
             Button("Open Document (only .h file supported)") {
                 NSDocumentController.shared.openDocument(nil)
             }
