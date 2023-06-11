@@ -25,10 +25,15 @@ struct WindowManagementProjectApp: App {
         Group {
             WindowGroup(id: SceneID.firstWindowGroup.id) {
                 ContentView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.regularMaterial)
                     .injectWindow(.firstWindowGroup)
             }
             .register(.firstWindowGroup)
+            .titlebarAppearsTransparent(true)
+            .movableByBackground(true)
             .windowButton(.closeButton, hidden: true)
+            .backgroundColor(.systemGray.withAlphaComponent(0.001))
 
             Settings {
                 VStack {
