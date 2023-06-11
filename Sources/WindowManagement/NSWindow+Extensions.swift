@@ -70,6 +70,10 @@ extension NSWindow {
                 self.isRestorable = !disableRestore
             }
 
+            if let animationBehavior = value.animationBehavior {
+                self.animationBehavior = animationBehavior
+            }
+
             value.windowButtonsEnabled.forEach {
                 standardWindowButton($0)?.isHidden = $1.isHidden
                 standardWindowButton($0)?.isEnabled = $1.enabled

@@ -21,6 +21,7 @@ struct WindowModifications {
     var backgroundColor: NSColor?
     var titlebarAppearsTransparent: Bool?
     var disableRestoreOnLaunch: Bool?
+    var animationBehavior: NSWindow.AnimationBehavior?
 
     struct WindowButton {
         var enabled = true

@@ -30,8 +30,8 @@ struct WindowManagementProjectApp: App {
                     .injectWindow(.firstWindowGroup)
             }
             .register(.firstWindowGroup)
-            .titlebarAppearsTransparent(true)
-            .movableByBackground(true)
+            .titlebarAppearsTransparent()
+            .movableByBackground()
             .windowButton(.closeButton, hidden: true)
             .backgroundColor(.systemGray.withAlphaComponent(0.001))
 
@@ -42,12 +42,13 @@ struct WindowManagementProjectApp: App {
                 .frame(minWidth: 300, minHeight: 300)
             }
             .enableOpenWindow()
-            
+
             NSDocumentGroup(for: CodeFileDocument.self) { document in
                 Text(document.fileURL?.absoluteString ?? "")
             }
             .register(.document(CodeFileDocument.self))
-            .movableByBackground(true)
+            .transition(.documentWindow)
+            .movableByBackground()
             .windowButton(.miniaturizeButton, hidden: true)
         }
         .environment(\.controlSize, .large)

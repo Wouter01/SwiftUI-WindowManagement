@@ -37,7 +37,7 @@ public extension Scene {
     }
 
     /// Indicates whether the window can be moved by clicking and dragging its background.
-    func movableByBackground(_ value: Bool) -> some Scene {
+    func movableByBackground(_ value: Bool = true) -> some Scene {
         WM.modifications[WM.currentIdentifier]?.movableByBackground = value
         return self
     }
@@ -92,7 +92,7 @@ public extension Scene {
     }
 
     /// Makes the titlebar transparent.
-    func titlebarAppearsTransparent(_ value: Bool) -> some Scene {
+    func titlebarAppearsTransparent(_ value: Bool = true) -> some Scene {
         WM.modifications[WM.currentIdentifier]?.titlebarAppearsTransparent = value
         return self
     }
@@ -100,6 +100,11 @@ public extension Scene {
     /// This will stop windows from relaunching if they were open in the last active app state.
     func disableRestoreOnLaunch() -> some Scene {
         WM.modifications[WM.currentIdentifier]?.disableRestoreOnLaunch = true
+        return self
+    }
+
+    func transition(_ transition: NSWindow.AnimationBehavior) -> some Scene {
+        WM.modifications[WM.currentIdentifier]?.animationBehavior = transition
         return self
     }
 }
