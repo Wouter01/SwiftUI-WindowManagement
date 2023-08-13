@@ -12,9 +12,4 @@ public extension SwiftUI.Scene {
     func modifier<T>(_ modifier: T) -> ModifiedContent<Self, T> {
         return .init(content: self, modifier: modifier)
     }
-
-    @inlinable
-    func environment<V>(_ keyPath: WritableKeyPath<EnvironmentValues, V>, _ value: V) -> some Scene {
-        modifier(_EnvironmentKeyWritingModifier(keyPath: keyPath, value: value))
-    }
 }
